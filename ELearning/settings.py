@@ -212,12 +212,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:4173",
-    "http://192.168.1.243:5173",
-    "http://192.168.1.243:5174"
-]
+CORS_ALLOWED_ORIGINS = ["https://elearningsrikanth.netlify.app"]
 
 # CLOUDINARY = {
 #     'cloud_name': 'dt6chpv9f',
