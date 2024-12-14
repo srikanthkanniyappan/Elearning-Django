@@ -3,7 +3,9 @@ from . import views
 
 urlpatterns = [
     path('routes/', views.getRoutes, name='courses_get_routes'),
-    path('course-list/', views.list_courses, name='list_courses'),
+    path('all-courses/', views.list_courses, name='list_courses'),
+    path('all-courses-with-status/', views.list_courses_with_enrollment_status, name='list_courses_with_enrollment_status'),
+    path('course-list/', views.enrolled_list_courses, name='list_courses'),
     path('course-videos/<uuid:course_id>/', views.get_course_videos, name='get_course_videos'),
     path('course-details/<uuid:course_id>/', views.get_course_details, name='get_course_details'),
     path('course/<uuid:course_id>/last-watched/', views.get_last_watched, name='get_last_watched'),

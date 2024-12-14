@@ -27,14 +27,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'django-insecure-j)=4c_a#w)$@ovx=l0+bavk=x@k^9d0dafh@88pyl48-p4q)&*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-# ALLOWED_HOSTS = [
-#     'localhost',
-#     '127.0.0.1',
-#     '192.168.1.243',
-# ]
-ALLOWED_HOSTS = ['elearning-django.onrender.com']
+ALLOWED_HOSTS = [
+    'localhost',
+    '192.168.1.243',
+]
+# ALLOWED_HOSTS = ['elearning-django.onrender.com']
 
 
 # Application definition
@@ -212,14 +211,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = ["https://elearningsrikanth.netlify.app"]
+# CORS_ALLOWED_ORIGINS = ["https://elearningsrikanth.netlify.app"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://192.168.1.243:5173",
+]
 
-# CLOUDINARY = {
-#     'cloud_name': 'dt6chpv9f',
-#     'api_key': '884937691531514',
-#     'api_secret': '_fO1ZUEawuNWLL-zJvsRymwI2Wk',
-# }
-# Configuration
+# CLOUDINARY Configuration
 cloudinary.config(
     cloud_name = "dt6chpv9f",
     api_key = "884937691531514",

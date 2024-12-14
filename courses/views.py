@@ -8,8 +8,6 @@ from .serializers import CourseSerializer, WatchHistorySerializer, VideoSerializ
 from django.utils import timezone
 from uuid import UUID
 
-# Utility function to validate UUID
-# Utility function to validate UUID
 def validate_uuid(uuid_str):
     try:
         # Convert input to UUID object to validate, then back to string to maintain consistency
@@ -17,6 +15,7 @@ def validate_uuid(uuid_str):
     except (ValueError, TypeError):
         # Return None if uuid_str is invalid
         return None
+
 @api_view(['POST'])
 @parser_classes([MultiPartParser, FormParser])
 def upload_video(request):
@@ -27,9 +26,17 @@ def upload_video(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['GET'])
+def list_courses(request):
+    """Lists all available courses."""
+    courses = Course.objects.all()
+    serializer = CourseSerializer(courses, many=True)
+    return Response(serializer.data)
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def list_courses(request):
+def enrolled_list_courses(request):
     """Lists courses the user is enrolled in."""
     user = request.user
     # Filter courses by user enrollment
@@ -37,6 +44,24 @@ def list_courses(request):
     courses = Course.objects.filter(id__in=enrolled_courses)
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def list_courses_with_enrollment_status(request):
+    """Lists all courses with enrollment status for the logged-in user."""
+    user = request.user
+    # Get all courses
+    courses = Course.objects.all()
+    # Get courses the user is enrolled in
+    enrolled_course_ids = Enrollment.objects.filter(user=user).values_list('course_id', flat=True)
+    # Serialize courses and add enrollment status
+    serialized_courses = []
+    for course in courses:
+        serialized_course = CourseSerializer(course).data
+        serialized_course['is_enrolled'] = course.id in enrolled_course_ids  # Add enrollment status
+        serialized_courses.append(serialized_course)
+
+    return Response(serialized_courses, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -325,7 +350,8 @@ def enroll_in_course(request):
     course_id = request.data.get('course_id')
 
     # Validate the course UUID
-    course_uuid = validate_uuid(course_id)
+    course_uuid = validate_uuid(course_id["course_id"])
+    # course_uuid = validate_uuid(course_id)
     if not course_uuid:
         return Response({"error": "Invalid course ID format."}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -391,6 +417,7 @@ def update_enrollment_status(request):
 def getRoutes(request):
     """Get available API routes.""" 
     routes = [
+        {'GET': '/all-courses/'},
         {'GET': '/course-list/'},
         {'GET': '/course-details/<uuid:course_id>/'},
         {'GET': '/course-videos/<uuid:course_id>/'},
