@@ -200,7 +200,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS_ALLOWED_ORIGINS = ["https://elearningsrikanth.netlify.app"]
 CORS_ALLOWED_ORIGINS = [
-
+'https://elearning-react-ochre.vercel.app'
 ]
 
 # CLOUDINARY Configuration
