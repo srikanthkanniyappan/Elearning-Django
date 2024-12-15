@@ -122,12 +122,12 @@ WSGI_APPLICATION = 'ELearning.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # DATABASES = {
@@ -141,16 +141,16 @@ DATABASES = {
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'elearning_oxhy',
-#         'USER': 'elearning_oxhy_user',
-#         'PASSWORD': 'wkwAxTjlhkuD8G7s1yDEM3ew0J7L2CEy',
-#         'HOST': 'dpg-ctatobl6l47c73bq6idg-a.oregon-postgres.render.com',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'elearning_oxhy',
+        'USER': 'elearning_oxhy_user',
+        'PASSWORD': 'wkwAxTjlhkuD8G7s1yDEM3ew0J7L2CEy',
+        'HOST': 'dpg-ctatobl6l47c73bq6idg-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
