@@ -109,10 +109,10 @@ def get_last_watched(request, course_id):
         last_watched_video = enrollment.last_watched_video
 
         if not last_watched_video:
-            # If no video has been watched, fetch the first video in the course
-            first_video = course.videos.first()
+            # If no video has been watched, fetch the video with video_order = 1
+            first_video = course.videos.filter(video_order=1).first()
             if first_video:
-                # Return the first video's ID
+                # Return the video with video_order = 1
                 return Response({"last_watched_video": first_video.id}, status=status.HTTP_200_OK)
             else:
                 return Response({"error": "No videos available in this course."}, status=status.HTTP_404_NOT_FOUND)
