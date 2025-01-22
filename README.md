@@ -57,10 +57,8 @@
 - 🔑 **Role-Based Access Control**: Secure multi-user support for Students, Teachers, and Admins, each with role-specific permissions.
 - 🔓 **Flexible Authentication**: Supports login using either username or email for convenience.
 - 🔒 **JWT Token Authentication**: Ensures secure access to API endpoints with robust token-based authentication.
-- 📚 **Course Management**: APIs to create, update, and delete courses and their associated materials.
+- 📚 **Course Management**: Students can enroll in and view available courses and their materials.
 - 🎥 **[Cloudinary Integration](https://cloudinary.com/) for Videos**: Store and serve video content seamlessly using Cloudinary for efficient media management.
-- ⏯️ **Progress Tracking**: API endpoints to save and fetch the last watched video for each user, enabling seamless resumption.
-- 📊 **User and Course Analytics**: Backend provides data for tracking user activity and course performance (future enhancement).
 - ⚙️ **Admin and Teacher Controls**: APIs for managing users, courses, and other administrative tasks (work in progress).
 - 🌐 **RESTful API Design**: Fully compliant with REST principles for scalable and maintainable backend services.
 - 📁 **[Neon PostgreSQL Integration](https://neon.tech/)**: Leverages Neon PostgreSQL for scalable, efficient, and reliable database operations.
