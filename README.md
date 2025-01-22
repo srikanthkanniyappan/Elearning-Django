@@ -1,7 +1,7 @@
 <div align="center">
   <!-- Logo and Title Section -->
   <a href="https://elearning-django-backend.vercel.app/">
-    <img src="https://github.com/user-attachments/assets/5ecbd757-f1d4-46e5-8dab-77e19dc0f2f0" alt="Elearning Logo" height="100px" width="100px" />
+    <img src="https://github.com/user-attachments/assets/7db4ae9c-246f-40b5-a686-1fb69222714b" alt="Elearning Logo" height="100px" width="100px" />
   </a>
   <h1>Elearning-Django 🖥️</h1>
   <p>Backend for the Elearning platform built using <strong>Django REST Framework</strong>. It enables managing courses, students, and content through a <strong>RESTful API</strong>. 🔧</p>
